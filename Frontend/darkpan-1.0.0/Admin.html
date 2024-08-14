@@ -8,6 +8,19 @@
     <meta content="" name="keywords">
     <meta content="" name="description">
 
+
+
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Table with Search Filter</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        .text-white th {
+            color: white;
+        }
+    </style>
+   
+
     <!-- Favicon -->
     <link href="img/favicon.ico" rel="icon">
 
@@ -226,6 +239,11 @@
                         
                     </div>
                     <div class="table-responsive">
+                        <!-- Search Form -->
+                        <div class="mb-3">
+                            <input type="text" id="searchInput" class="form-control" placeholder="Search by game name, genre, price, or release date">
+                        </div>
+                    
                         <table class="table text-start align-middle table-bordered table-hover mb-0">
                             <thead>
                                 <tr class="text-white">
@@ -236,7 +254,7 @@
                                     <th scope="col">Action</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody id="tableBody">
                                 <tr>
                                     <td>game1</td>
                                     <td>action</td>
@@ -248,9 +266,9 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>game1</td>
+                                    <td>pupg</td>
                                     <td>action</td>
-                                    <td>30$</td>
+                                    <td>5$</td>
                                     <td>12/08/1999</td>
                                     <td>
                                         <a class="btn btn-sm btn-primary" href="EditGame.html">edit</a>
@@ -260,7 +278,7 @@
                                 <tr>
                                     <td>game1</td>
                                     <td>action</td>
-                                    <td>30$</td>
+                                    <td>10$</td>
                                     <td>12/08/1999</td>
                                     <td>
                                         <a class="btn btn-sm btn-primary" href="EditGame.html">edit</a>
@@ -268,32 +286,20 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>game1</td>
+                                    <td>game2</td>
                                     <td>action</td>
-                                    <td>30$</td>
+                                    <td>20$</td>
                                     <td>12/08/1999</td>
                                     <td>
                                         <a class="btn btn-sm btn-primary" href="EditGame.html">edit</a>
                                         <a class="btn btn-sm btn-primary" href="">delete</a>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>game1</td>
-                                    <td>action</td>
-                                    <td>30$</td>
-                                    <td>12/08/1999</td>
-                                    <td>
-                                        <a class="btn btn-sm btn-primary" href="EditGame.html">edit</a>
-                                        <a class="btn btn-sm btn-primary" href="">delete</a>
-                                    </td>
-                                </tr>
+                                <!-- Additional rows go here -->
                             </tbody>
                         </table>
                     </div>
-                </div>
-            </div>
-            
-            
+                    
             <!-- Recent Sales End -->
 
 
@@ -461,6 +467,36 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+    
+    
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const searchInput = document.getElementById('searchInput');
+            const tableBody = document.getElementById('tableBody');
+            const rows = tableBody.getElementsByTagName('tr');
+    
+            searchInput.addEventListener('keyup', function() {
+                const filter = searchInput.value.toLowerCase();
+    
+                for (let i = 0; i < rows.length; i++) {
+                    let match = false;
+                    const cells = rows[i].getElementsByTagName('td');
+                    for (let j = 0; j < cells.length; j++) {
+                        if (cells[j]) {
+                            if (cells[j].textContent.toLowerCase().indexOf(filter) > -1) {
+                                match = true;
+                                break;
+                            }
+                        }
+                    }
+                    rows[i].style.display = match ? '' : 'none';
+                }
+            });
+        });
+    </script>
+
 </body>
 
 </html>
