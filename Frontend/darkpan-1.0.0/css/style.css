@@ -287,3 +287,18 @@
     background: var(--dark);
     border-color: var(--primary);
 }
+
+.wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Footer styles */
+footer {
+    background: var(--dark); /* Or any other background color */
+    padding: 20px;
+    text-align: center;
+    color: var(--light);
+    margin-top: auto; /* This pushes the footer to the bottom */
+}
