@@ -32,6 +32,7 @@
 </head>
 
 <body>
+    <div id="wrapper">
     <div class="container-fluid position-relative d-flex p-0">
         <!-- Spinner Start -->
         <div id="spinner" class="show bg-dark position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
@@ -98,6 +99,7 @@
 
 
         <!-- Content Start -->
+    <div class = "wrapper"> 
         <div class="content">
             <!-- Navbar Start -->
             <nav class="navbar navbar-expand bg-secondary navbar-dark sticky-top px-4 py-0">
@@ -108,27 +110,33 @@
                     <i class="fa fa-bars"></i>
                 </a>
                 <form class="d-none d-md-flex ms-4">
-                    <input class="form-control bg-dark border-0" type="search" placeholder="Search">
+                    <div class="input-group">
+                        <!-- Dropdown for Search Criteria -->
+                        <div class="input-group-prepend">
+                            <select class="form-select bg-dark text-white border-0">
+                                <option value="name" selected>Game Name</option>
+                                <option value="genre">Genre</option>
+                                <option value="price">Price</option>
+                            </select>
+                        </div>
+                        <!-- Search Input -->
+                        <input class="form-control bg-dark border-0" type="search" placeholder="Search">
+                    </div>
                 </form>
                 <div class="navbar-nav align-items-center ms-auto">
-                    <!-- 
-                    <a href="signin.html" class="btn btn-sm btn-primary me-2">Sign in</a>
-                    -->
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                             <img class="rounded-circle me-lg-2" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
                             <span class="d-none d-lg-inline-flex">Joe Doe</span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
-                            <!-- 
-                            <a href="#" class="dropdown-item">My Profile</a>
-                            <a href="#" class="dropdown-item">Settings</a>
-                            -->
                             <a href="signin.html" class="dropdown-item">Log Out</a>
                         </div>
                     </div>
                 </div>
             </nav>
+            
+            
             
             <!-- Navbar End -->
 
@@ -210,7 +218,7 @@
                         <h6 class="mb-0">Games</h6>
                         
                         <div>
-                            <a href="form.html" class="btn btn-sm btn-primary">New Game</a>
+                            <a href="CreateGame.html" class="btn btn-sm btn-primary">New Game</a>
                             <!-- 
                             <a href="">Show All</a>
                             -->
@@ -235,7 +243,7 @@
                                     <td>30$</td>
                                     <td>12/08/1999</td>
                                     <td>
-                                        <a class="btn btn-sm btn-primary" href="table.html">edit</a>
+                                        <a class="btn btn-sm btn-primary" href="EditGame.html">edit</a>
                                         <a class="btn btn-sm btn-primary" href="">delete</a>
                                     </td>
                                 </tr>
@@ -245,7 +253,7 @@
                                     <td>30$</td>
                                     <td>12/08/1999</td>
                                     <td>
-                                        <a class="btn btn-sm btn-primary" href="table.html">edit</a>
+                                        <a class="btn btn-sm btn-primary" href="EditGame.html">edit</a>
                                         <a class="btn btn-sm btn-primary" href="">delete</a>
                                     </td>
                                 </tr>
@@ -255,7 +263,7 @@
                                     <td>30$</td>
                                     <td>12/08/1999</td>
                                     <td>
-                                        <a class="btn btn-sm btn-primary" href="table.html">edit</a>
+                                        <a class="btn btn-sm btn-primary" href="EditGame.html">edit</a>
                                         <a class="btn btn-sm btn-primary" href="">delete</a>
                                     </td>
                                 </tr>
@@ -265,7 +273,7 @@
                                     <td>30$</td>
                                     <td>12/08/1999</td>
                                     <td>
-                                        <a class="btn btn-sm btn-primary" href="table.html">edit</a>
+                                        <a class="btn btn-sm btn-primary" href="EditGame.html">edit</a>
                                         <a class="btn btn-sm btn-primary" href="">delete</a>
                                     </td>
                                 </tr>
@@ -275,7 +283,7 @@
                                     <td>30$</td>
                                     <td>12/08/1999</td>
                                     <td>
-                                        <a class="btn btn-sm btn-primary" href="table.html">edit</a>
+                                        <a class="btn btn-sm btn-primary" href="EditGame.html">edit</a>
                                         <a class="btn btn-sm btn-primary" href="">delete</a>
                                     </td>
                                 </tr>
@@ -409,9 +417,11 @@
                 </div>
             </div>
             Widgets End -->
+        </div>
 
 
             <!-- Footer Start -->
+        <div class="footer"> 
             <div class="container-fluid pt-4 px-4">
                 <div class="bg-secondary rounded-top p-4">
                     <div class="row">
@@ -426,6 +436,8 @@
                     </div>
                 </div>
             </div>
+        </div>
+        
             <!-- Footer End -->
         </div>
         <!-- Content End -->
