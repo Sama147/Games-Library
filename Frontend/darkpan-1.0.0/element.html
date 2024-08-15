@@ -492,6 +492,81 @@
                     <div class="row">
                         <div class="col-12 col-sm-6 text-center text-sm-start">
                             &copy; <a href="#">Your Site Name</a>, All Right Reserved. 
+                            <style>
+                                body {
+                                    height: 100vh;
+                                    padding: 150px 75px;
+                                    text-align: center;
+                                    background-color: #6C7293;
+                                }
+                                h1 {
+                                    font-family: Arial, Helvetica, sans-serif;
+                                    font-size: 48px;
+                                }
+                                #typewriter {
+                                    color: #6C7293;
+                                    font-weight: bold;
+                                }
+                                #cursor {
+                                    color: #6C7293;
+                                    animation: blink 1s linear infinite;
+                                }
+                                @keyframes blink {
+                                    0% {
+                                        opacity: 100%;
+                                    }
+                                    50% {
+                                        opacity: 0%;
+                                    }
+                                }
+                                </style>
+                                <body>
+                                   <p style="color:#6C7293">Created By <span id="typewriter"></span> <span id="cursor">|</span></p> 
+                                   <script>
+                                
+                                function sleep(ms) {
+                                        return new Promise((resolve) => setTimeout(resolve, ms));
+                                    }
+                                    const phrases = ["Abdo", "Gasser", "Omar", "Sama"];
+                                    const el = document.getElementById("typewriter");
+                                    let sleepTime = 100;
+                                
+                                    const typeWord = async (word) => {
+                                        for (let i = 0; i < word.length; i++) {
+                                            el.innerText = word.substring(0, i + 1);
+                                            await sleep(sleepTime);
+                                        }
+                                    };
+                                
+                                    const deleteWord = async (word) => {
+                                        for (let i = word.length; i > 0; i--) {
+                                            el.innerText = word.substring(0, i);
+                                            await sleep(sleepTime);
+                                        }
+                                    };
+                                
+                                    const printWords = async (words) => {
+                                        await typeWord(words);
+                                        await sleep(2000); // Wait for 2 seconds
+                                        await deleteWord(words);
+                                    };
+                                
+                                    const writeLoop = async () => {
+                                        while (true) {
+                                            for (let i = 0; i < phrases.length; i++) {
+                                                let words = phrases.slice(0, i + 1).join(" ");
+                                                await printWords(words);
+                                            }
+                                
+                                            for (let i = phrases.length - 1; i >= 0; i--) {
+                                                let words = phrases.slice(0, i + 1).reverse().join(" ");
+                                                await printWords(words);
+                                            }
+                                        }
+                                    };
+                                    writeLoop();
+                                   </script>
+                                </body>
                         </div>
                         <div class="col-12 col-sm-6 text-center text-sm-end">
                             <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
