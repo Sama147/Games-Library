@@ -8,19 +8,19 @@
     "net8.0": []
   },
   "packageFolders": {
-    "C:\\Users\\sama.ashraf\\.nuget\\packages\\": {}
+    "C:\\Users\\abdo.nasser\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\sama.ashraf\\Sama\\Game C#\\Games-Library\\GameStore.Api\\GameStore.Api.csproj",
+      "projectUniqueName": "C:\\Users\\abdo.nasser\\Desktop\\Games-Library-main\\Games-Library\\GameStore.Api\\GameStore.Api.csproj",
       "projectName": "GameStore.Api",
-      "projectPath": "C:\\Users\\sama.ashraf\\Sama\\Game C#\\Games-Library\\GameStore.Api\\GameStore.Api.csproj",
-      "packagesPath": "C:\\Users\\sama.ashraf\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\sama.ashraf\\Sama\\Game C#\\Games-Library\\GameStore.Api\\obj\\",
+      "projectPath": "C:\\Users\\abdo.nasser\\Desktop\\Games-Library-main\\Games-Library\\GameStore.Api\\GameStore.Api.csproj",
+      "packagesPath": "C:\\Users\\abdo.nasser\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\abdo.nasser\\Desktop\\Games-Library-main\\Games-Library\\GameStore.Api\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\sama.ashraf\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\abdo.nasser\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
