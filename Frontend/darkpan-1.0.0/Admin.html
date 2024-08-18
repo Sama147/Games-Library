@@ -8,6 +8,15 @@
     <meta content="" name="keywords">
     <meta content="" name="description">
 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Table with Search Filter</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        .text-white th {
+            color: white;
+        }
+    </style>
+
     <!-- Favicon -->
     <link href="img/favicon.ico" rel="icon">
 
@@ -53,12 +62,12 @@
                 -->
                 <div class="d-flex align-items-center ms-4 mb-4">
                     <div class="position-relative">
-                        <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                        <img class="rounded-circle" src="img/testimonial-2.jpg" alt="" style="width: 40px; height: 40px;">
                         <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
                     </div>
                     <div class="ms-3">
-                        <h6 class="mb-0">Joe Doe</h6>
-                        <span>Admin</span>
+                        <h6 class="mb-0">Jack David</h6>
+                        <span>Guest</span>
                     </div>
                 </div>
                 <div class="navbar-nav w-100">
@@ -103,7 +112,7 @@
         <div class="content">
             <!-- Navbar Start -->
             <nav class="navbar navbar-expand bg-secondary navbar-dark sticky-top px-4 py-0">
-                <a href="index.html" class="navbar-brand d-flex d-lg-none me-4">
+                <a href="Admin.html" class="navbar-brand d-flex d-lg-none me-4">
                     <h2 class="text-primary mb-0"><i class="fa fa-user-edit"></i></h2>
                 </a>
                 <a href="#" class="sidebar-toggler flex-shrink-0">
@@ -135,7 +144,6 @@
                     </div>
                 </div>
             </nav>
-            
             
             
             <!-- Navbar End -->
@@ -216,16 +224,22 @@
                 <div class="bg-secondary text-center rounded p-4">
                     <div class="d-flex align-items-center justify-content-between mb-4">
                         <h6 class="mb-0">Games</h6>
-                        
+
                         <div>
                             <a href="CreateGame.html" class="btn btn-sm btn-primary">New Game</a>
                             <!-- 
-                            <a href="">Show All</a>
-                            -->
+                    <a href="">Show All</a>
+                    -->
                         </div>
-                        
+
                     </div>
                     <div class="table-responsive">
+                        <!-- Search Form -->
+                        <div class="mb-3">
+                            <input type="text" id="searchInput" class="form-control"
+                                placeholder="Search by game name, genre, price, or release date">
+                        </div>
+
                         <table class="table text-start align-middle table-bordered table-hover mb-0">
                             <thead>
                                 <tr class="text-white">
@@ -236,7 +250,7 @@
                                     <th scope="col">Action</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody id="tableBody">
                                 <tr>
                                     <td>game1</td>
                                     <td>action</td>
@@ -248,9 +262,9 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>game1</td>
+                                    <td>pupg</td>
                                     <td>action</td>
-                                    <td>30$</td>
+                                    <td>5$</td>
                                     <td>12/08/1999</td>
                                     <td>
                                         <a class="btn btn-sm btn-primary" href="EditGame.html">edit</a>
@@ -260,7 +274,7 @@
                                 <tr>
                                     <td>game1</td>
                                     <td>action</td>
-                                    <td>30$</td>
+                                    <td>10$</td>
                                     <td>12/08/1999</td>
                                     <td>
                                         <a class="btn btn-sm btn-primary" href="EditGame.html">edit</a>
@@ -268,32 +282,21 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>game1</td>
+                                    <td>game2</td>
                                     <td>action</td>
-                                    <td>30$</td>
+                                    <td>20$</td>
                                     <td>12/08/1999</td>
                                     <td>
                                         <a class="btn btn-sm btn-primary" href="EditGame.html">edit</a>
                                         <a class="btn btn-sm btn-primary" href="">delete</a>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>game1</td>
-                                    <td>action</td>
-                                    <td>30$</td>
-                                    <td>12/08/1999</td>
-                                    <td>
-                                        <a class="btn btn-sm btn-primary" href="EditGame.html">edit</a>
-                                        <a class="btn btn-sm btn-primary" href="">delete</a>
-                                    </td>
-                                </tr>
+                                <!-- Additional rows go here -->
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
-            
-            
             <!-- Recent Sales End -->
 
 
@@ -417,27 +420,74 @@
                 </div>
             </div>
             Widgets End -->
-        </div>
+            </div>
 
 
             <!-- Footer Start -->
-        <div class="footer"> 
-            <div class="container-fluid pt-4 px-4">
-                <div class="bg-secondary rounded-top p-4">
-                    <div class="row">
-                        <div class="col-12 col-sm-6 text-center text-sm-start">
-                            &copy; <a href="#">Games Store</a>, All Right Reserved. 
-                        </div>
-                        <div class="col-12 col-sm-6 text-center text-sm-end">
-                            <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-                            Designed By <a href="https://htmlcodex.com">HTML Codex</a>
-                            <br>Distributed By: <a href="https://themewagon.com" target="_blank">ThemeWagon</a>
+            <div class="footer">
+                <div class="container-fluid pt-4 px-4">
+                    <div class="bg-secondary rounded-top p-4">
+                        <div class="row">
+                            <div class="col-12 col-sm-6 text-center text-sm-start">
+                                &copy; <a href="#">Games Store</a>, All Right Reserved. 
+                               
+                                       <p style="color:#6C7293">Created By <span id="typewriter"></span> <span id="cursor">|</span></p> 
+                                       <script>
+                                        
+                                    
+                                    function sleep(ms) {
+                                            return new Promise((resolve) => setTimeout(resolve, ms));
+                                        }
+                                        const phrases = ["Abdo", "Gasser", "Omar", "Sama"];
+                                        const el = document.getElementById("typewriter");
+                                        let sleepTime = 100;
+                                    
+                                        const typeWord = async (word) => {
+                                            for (let i = 0; i < word.length; i++) {
+                                                el.innerText = word.substring(0, i + 1);
+                                                await sleep(sleepTime);
+                                            }
+                                        };
+                                    
+                                        const deleteWord = async (word) => {
+                                            for (let i = word.length; i > 0; i--) {
+                                                el.innerText = word.substring(0, i);
+                                                await sleep(sleepTime);
+                                            }
+                                        };
+                                    
+                                        const printWords = async (words) => {
+                                            await typeWord(words);
+                                            await sleep(2000); // Wait for 2 seconds
+                                            await deleteWord(words);
+                                        };
+                                    
+                                        const writeLoop = async () => {
+                                            while (true) {
+                                                for (let i = 0; i < phrases.length; i++) {
+                                                    let words = phrases.slice(0, i + 1).join(" ");
+                                                    await printWords(words);
+                                                }
+                                    
+                                                for (let i = phrases.length - 1; i >= 0; i--) {
+                                                    let words = phrases.slice(0, i + 1).reverse().join(" ");
+                                                    await printWords(words);
+                                                }
+                                            }
+                                        };
+                                        writeLoop();
+                                       </script>
+                                    </body>
+                            </div>
+                            <div class="col-12 col-sm-6 text-center text-sm-end">
+                                <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+                                Designed By <a href="https://htmlcodex.com">HTML Codex</a>
+                                <br>Distributed By: <a href="https://themewagon.com" target="_blank">ThemeWagon</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        
             <!-- Footer End -->
         </div>
         <!-- Content End -->
@@ -461,6 +511,33 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const searchInput = document.getElementById('searchInput');
+            const tableBody = document.getElementById('tableBody');
+            const rows = tableBody.getElementsByTagName('tr');
+
+            searchInput.addEventListener('keyup', function() {
+                const filter = searchInput.value.toLowerCase();
+
+                for (let i = 0; i < rows.length; i++) {
+                    let match = false;
+                    const cells = rows[i].getElementsByTagName('td');
+                    for (let j = 0; j < cells.length; j++) {
+                        if (cells[j]) {
+                            if (cells[j].textContent.toLowerCase().indexOf(filter) > -1) {
+                                match = true;
+                                break;
+                            }
+                        }
+                    }
+                    rows[i].style.display = match ? '' : 'none';
+                }
+            });
+        });
+    </script>
+
 </body>
 
 </html>
