@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\gaser\\Games-Library\\GameStore.Api\\GameStore.Api.csproj": {}
+    "C:\\Users\\gaser\\Downloads\\GameStore.Api\\GameStore.Api\\GameStore.Api.csproj": {}
   },
   "projects": {
-    "C:\\Users\\gaser\\Games-Library\\GameStore.Api\\GameStore.Api.csproj": {
+    "C:\\Users\\gaser\\Downloads\\GameStore.Api\\GameStore.Api\\GameStore.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\gaser\\Games-Library\\GameStore.Api\\GameStore.Api.csproj",
+        "projectUniqueName": "C:\\Users\\gaser\\Downloads\\GameStore.Api\\GameStore.Api\\GameStore.Api.csproj",
         "projectName": "GameStore.Api",
-        "projectPath": "C:\\Users\\gaser\\Games-Library\\GameStore.Api\\GameStore.Api.csproj",
+        "projectPath": "C:\\Users\\gaser\\Downloads\\GameStore.Api\\GameStore.Api\\GameStore.Api.csproj",
         "packagesPath": "C:\\Users\\gaser\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\gaser\\Games-Library\\GameStore.Api\\obj\\",
+        "outputPath": "C:\\Users\\gaser\\Downloads\\GameStore.Api\\GameStore.Api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\gaser\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -45,6 +45,38 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
+          "dependencies": {
+            "LinqKit.Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.1.5, )"
+            },
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.8, )"
+            },
+            "Microsoft.AspNetCore.Mvc.Core": {
+              "target": "Package",
+              "version": "[2.1.38, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.2, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[8.0.8, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[8.0.2, )"
+            },
+            "MinimalApis.Extensions": {
+              "target": "Package",
+              "version": "[0.11.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
