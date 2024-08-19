@@ -1,0 +1,63 @@
+GET http://localhost:5274/games
+
+###
+GET http://localhost:5274/games/paginated?pageNumber=4&pageSize=5
+
+
+
+
+
+
+###
+GET http://localhost:5274/games/search?search=Halo
+
+###
+GET http://localhost:5274/games/search?id=1
+
+###
+GET http://localhost:5274/games/search?genre=Fighting
+
+###
+GET http://localhost:5274/games/search?releaseDate=2013-06-14
+
+###
+POST http://localhost:5274/api/auth/login
+Content-Type: application/json
+
+{
+  "username": "admin@example.com",
+  "password": "AdminPassword123!"
+}
+
+
+
+
+
+
+###
+GET http://localhost:5274/games/1
+
+###
+POST http://localhost:5274/games
+Content-Type: application/json
+
+{
+    "name": "Madden NFL 2005",
+    "genreId": 3,
+    "price": 49.99,
+    "releaseDate": "2004-08-09"
+}
+
+###
+PUT http://localhost:5274/games/3
+Content-Type: application/json
+
+{
+    "name": "Street Fighter II Turbo",
+    "genreId": 1,
+    "price": 19.99,
+    "releaseDate": "1991-02-01"
+}
+
+###
+DELETE http://localhost:5274/games/8
