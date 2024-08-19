@@ -233,68 +233,35 @@
                         </div>
 
                     </div>
-                    <div class="table-responsive">
-                        <!-- Search Form -->
-                        <div class="mb-3">
-                            <input type="text" id="searchInput" class="form-control"
-                                placeholder="Search by game name, genre, price, or release date">
-                        </div>
+                    
+<div class="table-responsive">
+    <!-- Search Form -->
+    <div class="mb-3">
+        <input type="text" id="searchInput" class="form-control" placeholder="Search by game name, genre, price, or release date">
+        <ul id="suggestionList" class="list-group"></ul> <!-- Autocomplete suggestions -->
+    </div>
 
-                        <table class="table text-start align-middle table-bordered table-hover mb-0">
-                            <thead>
-                                <tr class="text-white">
-                                    <th scope="col">Game Name</th>
-                                    <th scope="col">Genre</th>
-                                    <th scope="col">Price</th>
-                                    <th scope="col">Release Date</th>
-                                    <th scope="col">Action</th>
-                                </tr>
-                            </thead>
-                            <tbody id="tableBody">
-                                <tr>
-                                    <td>game1</td>
-                                    <td>action</td>
-                                    <td>30$</td>
-                                    <td>12/08/1999</td>
-                                    <td>
-                                        <a class="btn btn-sm btn-primary" href="EditGame.html">edit</a>
-                                        <a class="btn btn-sm btn-primary" href="">delete</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>pupg</td>
-                                    <td>action</td>
-                                    <td>5$</td>
-                                    <td>12/08/1999</td>
-                                    <td>
-                                        <a class="btn btn-sm btn-primary" href="EditGame.html">edit</a>
-                                        <a class="btn btn-sm btn-primary" href="">delete</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>game1</td>
-                                    <td>action</td>
-                                    <td>10$</td>
-                                    <td>12/08/1999</td>
-                                    <td>
-                                        <a class="btn btn-sm btn-primary" href="EditGame.html">edit</a>
-                                        <a class="btn btn-sm btn-primary" href="">delete</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>game2</td>
-                                    <td>action</td>
-                                    <td>20$</td>
-                                    <td>12/08/1999</td>
-                                    <td>
-                                        <a class="btn btn-sm btn-primary" href="EditGame.html">edit</a>
-                                        <a class="btn btn-sm btn-primary" href="">delete</a>
-                                    </td>
-                                </tr>
-                                <!-- Additional rows go here -->
-                            </tbody>
-                        </table>
-                    </div>
+    <table class="table text-start align-middle table-bordered table-hover mb-0">
+        <thead>
+            <tr class="text-white">
+                <th scope="col">Game Name</th>
+                <th scope="col">Genre</th>
+                <th scope="col">Price</th>
+                <th scope="col">Release Date</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody id="tableBody">
+            <!-- Dynamic rows will be inserted here by JavaScript -->
+        </tbody>
+    </table>
+
+    <!-- Pagination Controls -->
+    <div class="pagination-controls mt-3">
+        <button id="prevPageButton" class="btn btn-primary">Previous</button>
+        <button id="nextPageButton" class="btn btn-primary">Next</button>
+    </div>
+</div>
                 </div>
             </div>
             <!-- Recent Sales End -->

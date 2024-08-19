@@ -231,7 +231,117 @@
         });
     });
 
+    document.addEventListener('DOMContentLoaded', function () {
+        const tableBody = document.getElementById('tableBody');
+        const pageSize = 5; // Customize as needed
+        let currentPage = 1;
+    
+        async function loadGames(pageNumber = 1) {
+            try {
+                const response = await fetch(`/paginated?pageNumber=${pageNumber}&pageSize=${pageSize}`);
+                const data = await response.json();
+    
+                tableBody.innerHTML = ''; // Clear previous rows
+    
+                data.Data.forEach(game => {
+                    const row = `
+                        <tr>
+                            <td>${game.name}</td>
+                            <td>${game.genreName}</td>
+                            <td>${game.price}$</td>
+                            <td>${game.releaseDate}</td>
+                            <td>
+                                <a class="btn btn-sm btn-primary" href="EditGame.html">edit</a>
+                                <a class="btn btn-sm btn-primary" href="">delete</a>
+                            </td>
+                        </tr>
+                    `;
+                    tableBody.innerHTML += row;
+                });
+    
+                // Optionally handle pagination buttons here
+            } catch (error) {
+                console.error('Error loading games:', error);
+            }
+        }
+    
+        // Load initial page
+        loadGames(currentPage);
+    
+        // Example for handling pagination buttons
+        document.getElementById('nextPageButton').addEventListener('click', () => {
+            currentPage++;
+            loadGames(currentPage);
+        });
+    
+        document.getElementById('prevPageButton').addEventListener('click', () => {
+            if (currentPage > 1) currentPage--;
+            loadGames(currentPage);
+        });
+    });
 
+    document.getElementById('searchInput').addEventListener('input', async function () {
+        const searchValue = this.value;
+    
+        try {
+            const response = await fetch(`/search?search=${searchValue}`);
+            const data = await response.json();
+    
+            if (response.status === 200) {
+                const tableBody = document.getElementById('tableBody');
+                tableBody.innerHTML = '';
+    
+                data.Data.forEach(game => {
+                    const row = `
+                        <tr>
+                            <td>${game.name}</td>
+                            <td>${game.genreName}</td>
+                            <td>${game.price}$</td>
+                            <td>${game.releaseDate}</td>
+                            <td>
+                                <a class="btn btn-sm btn-primary" href="EditGame.html">edit</a>
+                                <a class="btn btn-sm btn-primary" href="">delete</a>
+                            </td>
+                        </tr>
+                    `;
+                    tableBody.innerHTML += row;
+                });
+            } else {
+                console.error(data.Message);  // Handle 'not found' message
+            }
+        } catch (error) {
+            console.error('Error performing search:', error);
+        }
+    });
+
+    document.getElementById('searchInput').addEventListener('input', async function () {
+        const searchTerm = this.value;
+    
+        if (searchTerm.length === 0) return;
+    
+        try {
+            const response = await fetch(`/autocomplete?term=${searchTerm}`);
+            const data = await response.json();
+    
+            const suggestionList = document.getElementById('suggestionList');
+            suggestionList.innerHTML = ''; // Clear previous suggestions
+    
+            data.Suggestions.forEach(suggestion => {
+                const listItem = document.createElement('li');
+                listItem.textContent = suggestion;
+                suggestionList.appendChild(listItem);
+    
+                // Optional: Add click event for selecting the suggestion
+                listItem.addEventListener('click', function () {
+                    document.getElementById('searchInput').value = suggestion;
+                    suggestionList.innerHTML = ''; // Clear suggestions after selecting
+                });
+            });
+        } catch (error) {
+            console.error('Error fetching autocomplete suggestions:', error);
+        }
+    });
+    
 
 
 

@@ -109,9 +109,9 @@ public static class GamesEndpoints
             return game is null ?
                 Results.NotFound() : Results.Ok(game.ToGameDetailsDto());
         })
-        .WithName(GetGameEndpointName)
-        .AllowAnonymous();
-
+        .WithName(GetGameEndpointName);
+        //.AllowAnonymous();
+    
         // POST /games
         group.MapPost("/", async (CreateGameDto newGame, GameStoreContext dbContext) =>
         {
