@@ -230,16 +230,17 @@
                                 <div class="row mb-3">
                                     <label for="inputEmail3" class="col-sm-2 col-form-label">Name</label>
                                     <div class="col-sm-10">
-                                        <input type="email" class="form-control" id="inputEmail3">
+                                        <input type="text" class="form-control" id="inputName">
                                     </div>
                                 </div>
                                 <div>
                                     <label for="inputGenre" class="col-sm-2 col-form-label">Genre</label>
                                     <select class="form-select mb-3" aria-label="Default select example">
                                         <option selected>Open this select menu</option>
-                                        <option value="1">One</option>
-                                        <option value="2">Two</option>
-                                        <option value="3">Three</option>
+                                        <option value="1">Action</option>
+                                        <option value="2">Adventure</option>
+                                        <option value="3">Sports</option>
+                                        <option value="4">Fantasy</option>
                                     </select>
                                 </div>
                                 <div class="row mb-3">
@@ -326,7 +327,7 @@
                                     </div>
                                 </div>
                                 -->
-                                <a href="Admin.html" class="btn btn-primary">Save Changes</a>
+                                <a href="Admin.html" id= "saveChangesCreateGameBtn" class="btn btn-primary">Save Changes</a>
                             </form>
                         </div>
                     </div>
@@ -639,6 +640,11 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+    <script>
+        document.getElementById('saveChangesCreateGameBtn').addEventListener('click', function() {
+          createGame();
+        });
+      </script>
 </body>
 
 </html>

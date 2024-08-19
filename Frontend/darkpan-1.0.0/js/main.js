@@ -64,7 +64,7 @@
     Chart.defaults.borderColor = "#000000";
 
 
-    // Worldwide Sales Chart
+    /* Worldwide Sales Chart
     var ctx1 = $("#worldwide-sales").get(0).getContext("2d");
     var myChart1 = new Chart(ctx1, {
         type: "bar",
@@ -206,7 +206,7 @@
             responsive: true
         }
     });
-
+*/
     document.addEventListener("DOMContentLoaded", function () {
         const searchInput = document.getElementById('searchInput');
         const tableBody = document.getElementById('tableBody');
@@ -264,11 +264,128 @@
                 console.error('Error loading games:', error);
             }
         }
+
+//calls the CreatGame fucntion
+
+ 
+// Function to delete a game
+function deleteGame(id) {
+    // Find the index of the game with the given id in the games array
+    const index = games.findIndex((game) => game.id === id);
+
+    // If the game is found, remove it from the array
+    if (index !== -1) {
+        games.splice(index, 1);
+
+        // Remove the corresponding row from the table body
+        const tableBody = document.getElementById('tableBody');
+        const rows = tableBody.getElementsByTagName('tr');
+        for (let i = 0; i < rows.length; i++) {
+            const row = rows[i];
+            if (row.dataset.gameId === id.toString()) {
+                row.remove();
+                break;
+            }
+        }
+    } else {
+        console.error('Game not found');
+    }
+}
+
+
+// Function to create a new game
+function createGame() {
+    // Get the form data
+    const gameName = document.getElementById('gameName').value;
+    const gamePrice = document.getElementById('gamePrice').value;
+    const gameDate = document.getElementById('gameDate').value;
+    const gameGenre = document.getElementById('gameGenre').value;
+
+    // Create a new game object
+    const newGame = {
+        id: games.length + 1,
+        name: gameName,
+        price: gamePrice,
+        releaseDate: gameDate,
+        genre: gameGenre
+    };
+
+    // Add the new game to the games array
+    games.push(newGame);
+
+    // Update the table to reflect the new game
+    const tableBody = document.getElementById('tableBody');
+if (tableBody) {
+  // Update the table to reflect the new game
+  const row = document.createElement('tr');
+  row.dataset.gameId = newGame.id;
+  row.innerHTML = `
+    <td>${newGame.name}</td>
+    <td>${newGame.genre}</td>
+    <td>${newGame.price}</td>
+    <td>${newGame.releaseDate}</td>
+    <td class="action">
+      <a class="btn btn-sm btn-primary" href="EditGame.html">edit</a>
+      <a class="btn btn-sm btn-primary delete-button" href="">delete</a>
+    </td>
+  `;
+  tableBody.appendChild(row);
+} else {
+  console.log("Table element not found");
+}
+
+    const saveChangesButton = document.getElementById('saveChangesCreateGameBtn');
+    saveChangesButton.addEventListener('click', createGame);
+
+    // Add an event listener to the delete button
+    const deleteButton = row.querySelector('.delete-button');
+    deleteButton.addEventListener('click', (event) => {
+        event.preventDefault(); // Prevent the default link behavior
+        deleteGame(newGame.id);
+    });
+}
+// Function to generate the table
+     function generateTable(data) {
+            const tableBody = document.getElementById('tableBody');
+            tableBody.innerHTML = '';
+        
+            data.forEach((game) => {
+                const row = document.createElement('tr');
+                row.dataset.gameId = game.id; // Add the game id to the row
+                row.innerHTML = `
+                    <td>${game.name}</td>
+                    <td>${game.genre}</td>
+                    <td>${game.price}</td>
+                    <td>${game.releaseDate}</td>
+                    <td class="action">
+                        <a class="btn btn-sm btn-primary" href="EditGame.html">edit</a>
+                        <a class="btn btn-sm btn-primary delete-button" href="">delete</a>
+                    </td>
+                `;
+                tableBody.appendChild(row);
+        
+                // Add an event listener to the delete button
+                const deleteButton = row.querySelector('.delete-button');
+                deleteButton.addEventListener('click', (event) => {
+                    event.preventDefault(); // Prevent the default link behavior
+                    deleteGame(game.id);
+                });
+            });
+        }
+        const games = [
+            { id: 1, name: 'Game 1', genre: 'Action', price: 19.99, releaseDate: '2020-01-01' },
+            { id: 2, name: 'Game 2', genre: 'Adventure', price: 29.99, releaseDate: '2020-02-01' },
+            // ...
+          ];
     
         // Load initial page
-        loadGames(currentPage);
+        //loadGames(currentPage);
+        generateTable(games)
+
+        
     
-        // Example for handling pagination buttons
+        // Example for handling pagination buttons\
+        /*
         document.getElementById('nextPageButton').addEventListener('click', () => {
             currentPage++;
             loadGames(currentPage);
@@ -278,6 +395,7 @@
             if (currentPage > 1) currentPage--;
             loadGames(currentPage);
         });
+        */
     });
 
     document.getElementById('searchInput').addEventListener('input', async function () {
