@@ -228,32 +228,34 @@
                             <h6 class="mb-4">Create New game</h6>
                             <form>
                                 <div class="row mb-3">
-                                    <label for="inputEmail3" class="col-sm-2 col-form-label">Name</label>
+                                    <label for="inputName" class="col-sm-2 col-form-label">Name</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="inputName">
+                                        <input type="text" class="form-control" id="inputName" name="name" required>
                                     </div>
                                 </div>
-                                <div>
+                                <div class="row mb-3">
                                     <label for="inputGenre" class="col-sm-2 col-form-label">Genre</label>
-                                    <select class="form-select mb-3" aria-label="Default select example">
-                                        <option selected>Open this select menu</option>
-                                        <option value="1">Action</option>
-                                        <option value="2">Adventure</option>
-                                        <option value="3">Sports</option>
-                                        <option value="4">Fantasy</option>
-                                    </select>
+                                    <div class="col-sm-10">
+                                        <select class="form-select mb-3" id="inputGenre" name="genre" required>
+                                            <option selected disabled>Open this select menu</option>
+                                            <option value="Action">Action</option>
+                                            <option value="Adventure">Adventure</option>
+                                            <option value="Sports">Sports</option>
+                                            <option value="Fantasy">Fantasy</option>
+                                        </select>
+                                    </div>
                                 </div>
                                 <div class="row mb-3">
                                     <label for="inputPrice" class="col-sm-2 col-form-label">Price</label>
                                     <div class="col-sm-10">
-                                        <input type="number" class="form-control" id="inputPrice" min="0" step="0.01">
+                                        <input type="number" class="form-control" id="inputPrice" name="price" min="0" step="0.01" required>
                                     </div>
                                 </div>
                                 <div class="row mb-3">
                                     <label for="inputDate" class="col-sm-2 col-form-label">Date</label>
                                     <div class="col-sm-10 d-flex">
-                                        <select class="form-select me-2" id="inputDay">
-                                            <option selected>Day</option>
+                                        <select class="form-select me-2" id="inputDay" name="day" required>
+                                            <option selected disabled>Day</option>
                                             <!-- Generate day options from 1 to 31 -->
                                             <script>
                                                 for (var i = 1; i <= 31; i++) {
@@ -261,8 +263,8 @@
                                                 }
                                             </script>
                                         </select>
-                                        <select class="form-select me-2" id="inputMonth">
-                                            <option selected>Month</option>
+                                        <select class="form-select me-2" id="inputMonth" name="month" required>
+                                            <option selected disabled>Month</option>
                                             <option value="1">January</option>
                                             <option value="2">February</option>
                                             <option value="3">March</option>
@@ -276,9 +278,9 @@
                                             <option value="11">November</option>
                                             <option value="12">December</option>
                                         </select>
-                                        <select class="form-select" id="inputYear">
-                                            <option selected>Year</option>
-                                            <!-- Generate year options from current year back to 1600 -->
+                                        <select class="form-select" id="inputYear" name="year" required>
+                                            <option selected disabled>Year</option>
+                                            <!-- Generate year options from current year back to 1850 -->
                                             <script>
                                                 var currentYear = new Date().getFullYear();
                                                 for (var i = currentYear; i >= 1850; i--) {
@@ -288,46 +290,7 @@
                                         </select>
                                     </div>
                                 </div>
-                                <!-- Commented-out section below the form 
-                                
-                                <div class="row mb-3">
-                                    <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
-                                    <div class="col-sm-10">
-                                        <input type="password" class="form-control" id="inputPassword3">
-                                    </div>
-                                </div>
-                                <fieldset class="row mb-3">
-                                    <legend class="col-form-label col-sm-2 pt-0">Radios</legend>
-                                    <div class="col-sm-10">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="gridRadios"
-                                                id="gridRadios1" value="option1" checked>
-                                            <label class="form-check-label" for="gridRadios1">
-                                                First radio
-                                            </label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="gridRadios"
-                                                id="gridRadios2" value="option2">
-                                            <label class="form-check-label" for="gridRadios2">
-                                                Second radio
-                                            </label>
-                                        </div>
-                                    </div>
-                                </fieldset>
-                                <div class="row mb-3">
-                                    <legend class="col-form-label col-sm-2 pt-0">Checkbox</legend>
-                                    <div class="col-sm-10">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" id="gridCheck1">
-                                            <label class="form-check-label" for="gridCheck1">
-                                                Check me out
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                                -->
-                                <a href="Admin.html" id= "saveChangesCreateGameBtn" class="btn btn-primary">Save Changes</a>
+                                <input type="button" id="saveChangesCreateGameBtn" class="btn btn-primary" value="Save Changes">
                             </form>
                         </div>
                     </div>
@@ -641,8 +604,37 @@
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
     <script>
-        document.getElementById('saveChangesCreateGameBtn').addEventListener('click', function() {
-          createGame();
+         document.getElementById('saveChangesCreateGameBtn').addEventListener('click', function() {
+            // Retrieve form values
+            var name = document.getElementById('inputName').value;
+            var genre = document.getElementById('inputGenre').value;
+            var price = parseFloat(document.getElementById('inputPrice').value);
+            var day = document.getElementById('inputDay').value;
+            var month = document.getElementById('inputMonth').value;
+            var year = document.getElementById('inputYear').value;
+
+            // Format the release date
+            var releaseDate = `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`;
+
+            // Create the game object
+            var game = {
+                id: Date.now(), // Using timestamp as a unique ID
+                name: name,
+                genre: genre,
+                price: price,
+                releaseDate: releaseDate
+            };
+
+            // Save to local storage
+            localStorage.setItem('game_' + game.id, JSON.stringify(game));
+
+
+
+            // Optional: Alert the user
+            alert('Game saved successfully!');
+            
+            window.location.href = 'Admin.html';
+
         });
       </script>
 </body>

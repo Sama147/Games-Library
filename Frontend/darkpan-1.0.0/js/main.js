@@ -345,42 +345,61 @@ if (tableBody) {
     });
 }
 // Function to generate the table
-     function generateTable(data) {
-            const tableBody = document.getElementById('tableBody');
-            tableBody.innerHTML = '';
-        
-            data.forEach((game) => {
-                const row = document.createElement('tr');
-                row.dataset.gameId = game.id; // Add the game id to the row
-                row.innerHTML = `
-                    <td>${game.name}</td>
-                    <td>${game.genre}</td>
-                    <td>${game.price}</td>
-                    <td>${game.releaseDate}</td>
-                    <td class="action">
-                        <a class="btn btn-sm btn-primary" href="EditGame.html">edit</a>
-                        <a class="btn btn-sm btn-primary delete-button" href="">delete</a>
-                    </td>
-                `;
-                tableBody.appendChild(row);
-        
-                // Add an event listener to the delete button
-                const deleteButton = row.querySelector('.delete-button');
-                deleteButton.addEventListener('click', (event) => {
-                    event.preventDefault(); // Prevent the default link behavior
-                    deleteGame(game.id);
-                });
-            });
+function generateTable(data) {
+    const tableBody = document.getElementById('tableBody');
+    tableBody.innerHTML = '';
+
+    data.forEach((game) => {
+        const row = document.createElement('tr');
+        row.dataset.gameId = game.id; // Add the game id to the row
+        row.innerHTML = `
+            <td>${game.name}</td>
+            <td>${game.genre}</td>
+            <td>${game.price}</td>
+            <td>${game.releaseDate}</td>
+            <td class="action">
+                <a class="btn btn-sm btn-primary" href="EditGame.html">edit</a>
+                <a class="btn btn-sm btn-primary delete-button" href="">delete</a>
+            </td>
+        `;
+        tableBody.appendChild(row);
+
+        // Add an event listener to the delete button
+        const deleteButton = row.querySelector('.delete-button');
+        deleteButton.addEventListener('click', (event) => {
+            event.preventDefault(); // Prevent the default link behavior
+            deleteGame(game.id);
+        });
+    });
+}
+
+
+
+function loadGames() {
+    const games = [
+        { id: 1, name: 'Game 1', genre: 'Action', price: 19.99, releaseDate: '2020-01-01' },
+        { id: 2, name: 'Game 2', genre: 'Adventure', price: 29.99, releaseDate: '2020-02-01' },
+        // Add more predefined games if needed
+    ];
+
+    // Retrieve games from local storage
+    for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        if (key.startsWith('game_')) {
+            const game = JSON.parse(localStorage.getItem(key));
+            games.push(game);
         }
-        const games = [
-            { id: 1, name: 'Game 1', genre: 'Action', price: 19.99, releaseDate: '2020-01-01' },
-            { id: 2, name: 'Game 2', genre: 'Adventure', price: 29.99, releaseDate: '2020-02-01' },
-            // ...
-          ];
+    }
+
+    // Generate the table with the combined list of games
+    generateTable(games);
+}
+
     
         // Load initial page
         //loadGames(currentPage);
-        generateTable(games)
+          // Load games when the page loads
+          window.onload = loadGames;
 
         
     
