@@ -374,6 +374,19 @@ function generateTable(data) {
 }
 
 
+function deleteGame(gameId) {
+    // Remove the game from local storage
+    let games = JSON.parse(localStorage.getItem('games')) || [];
+    games = games.filter(game => game.id !== gameId);
+    localStorage.setItem('games', JSON.stringify(games));
+
+    // Remove the row from the table
+    const row = document.querySelector(`tr[data-game-id="${gameId}"]`);
+    if (row) {
+        row.remove();
+    }
+}
+
 
 function loadGames() {
     const games = [
